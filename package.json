@@ -12,7 +12,7 @@
     "cy:run": "cypress run --reporter mochawesome",
     "dev:ssr": "ng run angular-dev-test:serve-ssr",
     "serve:ssr": "node dist/angular-dev-test/server/main.js",
-    "build:ssr": "ng build && ng run angular-starter:server",
+    "build:ssr": "ng build && ng run angular-dev-test:server",
     "build:ssr-prod": "ng build --prod && ng run angular-dev-test:server:production",
     "prerender": "ng run angular-dev-test:prerender"
   },
