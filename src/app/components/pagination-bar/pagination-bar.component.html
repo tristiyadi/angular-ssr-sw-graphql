@@ -1,0 +1,47 @@
+<ul class="pagination">
+  <ng-container *ngIf="pageInfo?.currentPage as currentPage">
+    <li
+      [class.disabled]="currentPage - 1 < 1"
+      class="waves-effect btn-skip-previous"
+    >
+      <a (click)="currentPageChanges.next(1)"
+        ><i class="material-icons">skip_previous</i></a
+      >
+    </li>
+    <li
+      [class.disabled]="currentPage - 1 < 1"
+      class="waves-effect btn-previous"
+    >
+      <a (click)="currentPageChanges.next(currentPage - 1)"
+        ><i class="material-icons">chevron_left</i></a
+      >
+    </li>
+    <ng-container *ngFor="let pageIndex of pageArray; let i = index">
+      <ng-container *ngIf="pageIndex + currentPage as pageNumber">
+        <li
+          *ngIf="pageNumber > 0 && pageNumber <= (pageInfo?.lastPage || 0)"
+          [class.active]="pageNumber === currentPage"
+          class="waves-effect page-number page-number-{{ pageNumber }}"
+        >
+          <a (click)="currentPageChanges.next(pageNumber)">{{ pageNumber }}</a>
+        </li>
+      </ng-container>
+    </ng-container>
+    <li
+      [class.disabled]="currentPage + 1 > (pageInfo?.lastPage || 0)"
+      class="waves-effect btn-next"
+    >
+      <a (click)="currentPageChanges.next(currentPage + 1)"
+        ><i class="material-icons">chevron_right</i></a
+      >
+    </li>
+    <li
+      [class.disabled]="currentPage + 1 > (pageInfo?.lastPage || 0)"
+      class="waves-effect btn-skip-next"
+    >
+      <a (click)="currentPageChanges.next(pageInfo?.lastPage || 0)"
+        ><i class="material-icons">skip_next</i></a
+      >
+    </li>
+  </ng-container>
+</ul>

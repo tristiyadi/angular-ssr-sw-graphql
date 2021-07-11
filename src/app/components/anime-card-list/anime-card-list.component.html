@@ -1,0 +1,36 @@
+<ul class="collection">
+  <ng-container *ngIf="!showPlaceholder; else placeholder">
+    <ng-container *ngIf="(items?.length || 0) > 0; else noResult">
+      <li class="collection-item" *ngFor="let item of items">
+        <div
+          class="collection-item__image"
+          [ngStyle]="{
+            'background-image': 'url(' + item.coverImage?.medium + ')',
+            'background-color': item.coverImage?.color
+          }"
+        ></div>
+        <div class="collection-item__content">
+          <div
+            class="collection-item__title"
+            [ngStyle]="{ color: item.coverImage?.color || 'inherit' }"
+          >
+            {{ item.title?.english || item.title?.native || '' }}
+          </div>
+          <div class="collection-item__description" [innerHTML]="item.description"></div>
+        </div>
+      </li>
+    </ng-container>
+  </ng-container>
+</ul>
+
+<ng-template #noResult> <li>No result</li> </ng-template>
+
+<ng-template #placeholder>
+  <li class="collection-item" *ngFor="let item of Array(perPage)">
+    <div class="collection-item__image"></div>
+    <div class="collection-item__content">
+      <div class="collection-item__title placeholder"></div>
+      <div class="collection-item__description placeholder"></div>
+    </div>
+  </li>
+</ng-template>

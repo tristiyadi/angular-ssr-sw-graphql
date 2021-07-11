@@ -1,0 +1,28 @@
+<div class="main">
+  <div class="card">
+    <div
+      class="progress"
+      [style.opacity]="(isLoadingBarShown$ | async) ? 1 : 0"
+    >
+      <div class="indeterminate"></div>
+    </div>
+    <div class="card-content"><h1>Anime Videos</h1></div>
+    <div class="card-search">
+      <app-main-search-box
+        (userTyping)="onSearchBoxChanges($event)"
+      ></app-main-search-box>
+    </div>
+    <div class="card-content">
+      <app-anime-card-list
+        [items]="(videoResult$ | async)?.videos || []"
+        [showPlaceholder]="!(videoResult$ | async)?.videos"
+      ></app-anime-card-list>
+    </div>
+    <div class="card-footer">
+      <app-pagination-bar
+        (currentPageChanges)="onPageNumberChanges($event)"
+        [pageInfo]="(videoResult$ | async)?.pageInfo || {}"
+      ></app-pagination-bar>
+    </div>
+  </div>
+</div>
