@@ -2,6 +2,7 @@
   <ng-container *ngIf="!showPlaceholder; else placeholder">
     <ng-container *ngIf="(items?.length || 0) > 0; else noResult">
       <li class="collection-item" *ngFor="let item of items">
+        <a  class="collection-item__link" [href]="item.siteUrl" target="_blank" rel="noopener noreferrer">
         <div
           class="collection-item__image"
           [ngStyle]="{
@@ -18,6 +19,7 @@
           </div>
           <div class="collection-item__description" [innerHTML]="item.description"></div>
         </div>
+        </a>
       </li>
     </ng-container>
   </ng-container>

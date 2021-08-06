@@ -1,9 +1,17 @@
 .collection-item {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
+  &__link {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    &:hover {
+      font-weight:bold;
+    }
+  }
   &__image {
-    width: 48px;
+    width: 54px;
     height: 64px;
     background-color: #eeeeee;
     background-size: contain;
@@ -28,6 +36,11 @@
     margin-top: 6px;
     text-overflow: ellipsis;
     overflow: hidden;
+    color: #888888;
+    &:hover {
+      color: rgb(30, 27, 27);
+      font-weight:bold;
+    }
   }
 }
 
